@@ -177,7 +177,7 @@
                 "--output-dir=lib/l10n",
                 "--output-class=SampleChatLocalizations",
                 "--output-localization-file=sample_chat_localizations.dart",
-                "--preferred-supported-locales='en,fi'",
+                "--preferred-supported-locales='en'",
                 "--untranslated-messages-file=lib/l10n/missing_localizations.json"
             ],
             "presentation": {
