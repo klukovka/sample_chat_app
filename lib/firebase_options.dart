@@ -47,30 +47,30 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAXRg97c31VMj2sDNLofuYHIR35Cl3r-kc',
-    appId: '1:1036405825660:web:d67c7c90512349b05ee9f9',
-    messagingSenderId: '1036405825660',
-    projectId: 'sample-chat-app-7af69',
-    authDomain: 'sample-chat-app-7af69.firebaseapp.com',
-    storageBucket: 'sample-chat-app-7af69.appspot.com',
-    measurementId: 'G-M54HCP7T3C',
+    apiKey: 'AIzaSyBAdm_b42H3ZKN5UGvrdV-zmt3VH9BPSxs',
+    appId: '1:598027064979:web:2604f91526f1612d97df66',
+    messagingSenderId: '598027064979',
+    projectId: 'sample-chat-8e691',
+    authDomain: 'sample-chat-8e691.firebaseapp.com',
+    storageBucket: 'sample-chat-8e691.appspot.com',
+    measurementId: 'G-7HGMC2MB80',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyD-m1-sVnB7qm8AYFmBhLPVhPxevlg0Uoc',
-    appId: '1:1036405825660:android:13db4dc0485deaac5ee9f9',
-    messagingSenderId: '1036405825660',
-    projectId: 'sample-chat-app-7af69',
-    storageBucket: 'sample-chat-app-7af69.appspot.com',
+    apiKey: 'AIzaSyC_bB_TL0r938NM6O6DRJWWGxA_mfG6M0Q',
+    appId: '1:598027064979:android:fbc48e57e741ff1497df66',
+    messagingSenderId: '598027064979',
+    projectId: 'sample-chat-8e691',
+    storageBucket: 'sample-chat-8e691.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyD7sJ_FCsB9Y-T95BZJ1z9CV0oCs-Px0fo',
-    appId: '1:1036405825660:ios:f7379a7a5d83e1735ee9f9',
-    messagingSenderId: '1036405825660',
-    projectId: 'sample-chat-app-7af69',
-    storageBucket: 'sample-chat-app-7af69.appspot.com',
-    iosClientId: '1036405825660-mj07i7sau3130afpjcckpo25h9mmoess.apps.googleusercontent.com',
+    apiKey: 'AIzaSyAna-LR364EM8y4p7QrfOA9n3NGSY4Rsxw',
+    appId: '1:598027064979:ios:a9493bfa5197ef9897df66',
+    messagingSenderId: '598027064979',
+    projectId: 'sample-chat-8e691',
+    storageBucket: 'sample-chat-8e691.appspot.com',
+    iosClientId: '598027064979-r4ko05kcs3k0pfndo4k8q73jihat08r4.apps.googleusercontent.com',
     iosBundleId: 'com.example.sampleChatApp',
   );
 }
