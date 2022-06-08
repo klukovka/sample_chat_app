@@ -10,7 +10,7 @@ class SampleChatApp extends StatelessWidget {
 
   ThemeData get _darkTheme {
     return FlexThemeData.dark(
-      scheme: FlexScheme.rosewood,
+      scheme: FlexScheme.jungle,
       surfaceMode: FlexSurfaceMode.highScaffoldLowSurface,
       blendLevel: 15,
       appBarStyle: FlexAppBarStyle.background,
@@ -25,7 +25,7 @@ class SampleChatApp extends StatelessWidget {
 
   ThemeData get _lightTheme {
     return FlexThemeData.light(
-      scheme: FlexScheme.rosewood,
+      scheme: FlexScheme.jungle,
       surfaceMode: FlexSurfaceMode.highScaffoldLowSurface,
       blendLevel: 20,
       appBarOpacity: 0.95,
