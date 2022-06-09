@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
@@ -29,7 +30,7 @@ class PeopleTabCubit extends BaseCubit<PeopleTabState> {
   void _listenPeople(QuerySnapshot<Map<String, dynamic>> event) {
     emit(state.copyWith(
       users: event.docs.map((e) {
-        return ChatUser.fromMap(e.data());
+        return ChatUser.fromJson(e.data());
       }).toList(),
     ));
   }

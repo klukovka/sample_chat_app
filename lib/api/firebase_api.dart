@@ -21,6 +21,12 @@ class FirebaseApi {
       .where('uid', isNotEqualTo: _auth.currentUser?.uid)
       .snapshots();
 
+  Stream<QuerySnapshot<Map<String, dynamic>>> getMessages(String chatId) =>
+      _firestore
+          .collection('messages')
+          .where('chatId', isEqualTo: chatId)
+          .snapshots();
+
   Future<void> googleLogin() async {
     final googleUser = await GoogleSignIn().signIn();
     if (googleUser == null) return;
@@ -58,8 +64,16 @@ class FirebaseApi {
     }
   }
 
-  Future<Stream<QuerySnapshot<Map<String, dynamic>>>> getChatWithUser(
-      String userId) async {
+  Future<QuerySnapshot<Map<String, dynamic>>> getUser(
+    String userId,
+  ) async {
+    final users = _firestore.collection('users');
+    return await users.where('uid', isEqualTo: userId).limit(1).get();
+  }
+
+  Future<QuerySnapshot<Map<String, dynamic>>> getChatWithUser(
+    String userId,
+  ) async {
     final chats = _firestore.collection('chats');
     final query = [
       [userId, _auth.currentUser?.uid],
@@ -75,11 +89,10 @@ class FirebaseApi {
         'owner': _auth.currentUser?.uid,
         'lastMessage': null,
         'users': [userId, _auth.currentUser?.uid],
-        'messages': [],
         'uid': const Uuid().v4(),
       });
     }
 
-    return chats.where('users', whereIn: query).limit(1).snapshots();
+    return await chats.where('users', whereIn: query).limit(1).get();
   }
 }
