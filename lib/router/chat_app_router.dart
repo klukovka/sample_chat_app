@@ -9,16 +9,4 @@ final router = locator<ChatAppRouter>();
 @lazySingleton
 class ChatAppRouter extends BaseRouter {
   ChatAppRouter(AppAutoRouter router) : super(router);
-
-  Future<void> pushEditPhoneNumberPage() async {
-    await push(const EditPhoneNumberRoute());
-  }
-
-  Future<void> pushSelectCountryPage(
-    ValueSetter<Map<String, dynamic>> onSelected,
-  ) async {
-    await push(SelectCountryRoute(
-      onSelected: onSelected,
-    ));
-  }
 }

@@ -9,7 +9,7 @@ import 'package:sample_chat_app/sample_chat_app.dart';
 import 'config/di.dart';
 import 'firebase_options.dart';
 
-const _useEmulator = true;
+const _useEmulator = false;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
