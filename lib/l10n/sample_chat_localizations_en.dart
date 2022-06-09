@@ -51,4 +51,10 @@ class SampleChatLocalizationsEn extends SampleChatLocalizations {
 
   @override
   String get requestCode => 'Request code';
+
+  @override
+  String get selectCountry => 'Select Country';
+
+  @override
+  String get loading => 'Loading';
 }

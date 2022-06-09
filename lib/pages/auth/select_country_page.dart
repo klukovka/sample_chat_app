@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sample_chat_app/router/chat_app_router.dart';
+import 'package:sample_chat_app/utils/extensions/build_context_ext.dart';
 
 class SelectCountryPage extends StatefulWidget {
   final ValueSetter<Map<String, dynamic>> onSelected;
@@ -51,8 +52,8 @@ class _SelectCountryPageState extends State<SelectCountryPage> {
       body: CustomScrollView(
         slivers: [
           CupertinoSliverNavigationBar(
-            largeTitle: Text("Select Country"),
-            previousPageTitle: "Edit Number",
+            largeTitle: Text(context.strings.selectCountry),
+            previousPageTitle: context.strings.editNumber,
           ),
           SliverToBoxAdapter(
             child: CupertinoSearchTextField(
@@ -88,7 +89,7 @@ class _SelectCountryPageState extends State<SelectCountryPage> {
                     trailing: Text(e['dial_code']),
                   ))
               .toList()
-          : [Center(child: Text("Loading"))]),
+          : [Center(child: Text(context.strings.loading))]),
     );
   }
 }

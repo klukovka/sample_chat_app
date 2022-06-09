@@ -181,6 +181,18 @@ abstract class SampleChatLocalizations {
   /// In en, this message translates to:
   /// **'Request code'**
   String get requestCode;
+
+  /// No description provided for @selectCountry.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Country'**
+  String get selectCountry;
+
+  /// No description provided for @loading.
+  ///
+  /// In en, this message translates to:
+  /// **'Loading'**
+  String get loading;
 }
 
 class _SampleChatLocalizationsDelegate extends LocalizationsDelegate<SampleChatLocalizations> {

@@ -13,5 +13,7 @@
     "verification": "Verification • one step",
     "enterPhoneNumber": "Enter your phone number",
     "activationCode": "You will receive an activation code in short time",
-    "requestCode": "Request code"
+    "requestCode": "Request code",
+    "selectCountry": "Select Country",
+    "loading": "Loading"
 }

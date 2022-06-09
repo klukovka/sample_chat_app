@@ -11,6 +11,7 @@
 // ignore_for_file: type=lint
 
 import 'package:auto_route/auto_route.dart' as _i9;
+import 'package:flutter/cupertino.dart' as _i11;
 import 'package:flutter/material.dart' as _i10;
 
 import '../pages/auth/edit_phone_number_page.dart' as _i2;
@@ -130,7 +131,7 @@ class EditPhoneNumberRoute extends _i9.PageRouteInfo<void> {
 /// [_i3.SelectCountryPage]
 class SelectCountryRoute extends _i9.PageRouteInfo<SelectCountryRouteArgs> {
   SelectCountryRoute(
-      {_i10.Key? key, required void Function(Map<String, dynamic>) onSelected})
+      {_i11.Key? key, required void Function(Map<String, dynamic>) onSelected})
       : super(SelectCountryRoute.name,
             path: '/phoneNumber/country',
             args: SelectCountryRouteArgs(key: key, onSelected: onSelected));
@@ -141,7 +142,7 @@ class SelectCountryRoute extends _i9.PageRouteInfo<SelectCountryRouteArgs> {
 class SelectCountryRouteArgs {
   const SelectCountryRouteArgs({this.key, required this.onSelected});
 
-  final _i10.Key? key;
+  final _i11.Key? key;
 
   final void Function(Map<String, dynamic>) onSelected;
 
