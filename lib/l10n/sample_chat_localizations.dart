@@ -122,77 +122,11 @@ abstract class SampleChatLocalizations {
   /// **'Settings'**
   String get settings;
 
-  /// No description provided for @letsStart.
+  /// No description provided for @signUpWithGoogle.
   ///
   /// In en, this message translates to:
-  /// **'Let\'s Start'**
-  String get letsStart;
-
-  /// No description provided for @termsAndConditions.
-  ///
-  /// In en, this message translates to:
-  /// **'Terms and conditions'**
-  String get termsAndConditions;
-
-  /// No description provided for @hello.
-  ///
-  /// In en, this message translates to:
-  /// **'Hello'**
-  String get hello;
-
-  /// No description provided for @helloDescription.
-  ///
-  /// In en, this message translates to:
-  /// **'WhatsApp is a Cross-platform mobile messaging with friends all over the world'**
-  String get helloDescription;
-
-  /// No description provided for @editNumber.
-  ///
-  /// In en, this message translates to:
-  /// **'Edit Number'**
-  String get editNumber;
-
-  /// No description provided for @back.
-  ///
-  /// In en, this message translates to:
-  /// **'Back'**
-  String get back;
-
-  /// No description provided for @verification.
-  ///
-  /// In en, this message translates to:
-  /// **'Verification • one step'**
-  String get verification;
-
-  /// No description provided for @enterPhoneNumber.
-  ///
-  /// In en, this message translates to:
-  /// **'Enter your phone number'**
-  String get enterPhoneNumber;
-
-  /// No description provided for @activationCode.
-  ///
-  /// In en, this message translates to:
-  /// **'You will receive an activation code in short time'**
-  String get activationCode;
-
-  /// No description provided for @requestCode.
-  ///
-  /// In en, this message translates to:
-  /// **'Request code'**
-  String get requestCode;
-
-  /// No description provided for @selectCountry.
-  ///
-  /// In en, this message translates to:
-  /// **'Select Country'**
-  String get selectCountry;
-
-  /// No description provided for @loading.
-  ///
-  /// In en, this message translates to:
-  /// **'Loading'**
-  String get loading;
+  /// **'Sign up with Google'**
+  String get signUpWithGoogle;
 }
 
 class _SampleChatLocalizationsDelegate extends LocalizationsDelegate<SampleChatLocalizations> {

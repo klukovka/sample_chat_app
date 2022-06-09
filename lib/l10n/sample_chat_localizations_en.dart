@@ -23,38 +23,5 @@ class SampleChatLocalizationsEn extends SampleChatLocalizations {
   String get settings => 'Settings';
 
   @override
-  String get letsStart => 'Let\'s Start';
-
-  @override
-  String get termsAndConditions => 'Terms and conditions';
-
-  @override
-  String get hello => 'Hello';
-
-  @override
-  String get helloDescription => 'WhatsApp is a Cross-platform mobile messaging with friends all over the world';
-
-  @override
-  String get editNumber => 'Edit Number';
-
-  @override
-  String get back => 'Back';
-
-  @override
-  String get verification => 'Verification • one step';
-
-  @override
-  String get enterPhoneNumber => 'Enter your phone number';
-
-  @override
-  String get activationCode => 'You will receive an activation code in short time';
-
-  @override
-  String get requestCode => 'Request code';
-
-  @override
-  String get selectCountry => 'Select Country';
-
-  @override
-  String get loading => 'Loading';
+  String get signUpWithGoogle => 'Sign up with Google';
 }

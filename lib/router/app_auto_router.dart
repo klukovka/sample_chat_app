@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:sample_chat_app/pages/auth/login_page.dart';
 import 'package:sample_chat_app/pages/main_page/tabs/calls_tab.dart';
 import 'package:sample_chat_app/pages/main_page/tabs/chats_tab.dart';
 import 'package:sample_chat_app/pages/main_page/tabs/person_tab.dart';
@@ -13,9 +14,15 @@ const _fadeIn = TransitionsBuilders.fadeIn;
   replaceInRouteName: 'Page|Tab,Route',
   routes: [
     CustomRoute(
+      page: LoginPage,
+      path: '/auth/login',
+      initial: true,
+      transitionsBuilder: _fadeIn,
+      durationInMilliseconds: _durationInMilliseconds,
+    ),
+    CustomRoute(
       page: MainPage,
       path: '/main/',
-      initial: true,
       transitionsBuilder: _fadeIn,
       durationInMilliseconds: _durationInMilliseconds,
       children: [
