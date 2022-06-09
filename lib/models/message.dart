@@ -10,7 +10,7 @@ part 'message.g.dart';
 class Message extends Equatable {
   final String? uid;
   final String text;
-  final String createdAt;
+  final DateTime createdAt;
   final String userId;
   final String chatId;
   final ChatUser? user;
@@ -23,6 +23,7 @@ class Message extends Equatable {
     this.uid,
     this.user,
   });
+
   factory Message.fromJson(Map<String, dynamic> json) {
     return _$MessageFromJson(json);
   }

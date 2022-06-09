@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
+import 'package:sample_chat_app/models/message.dart';
 import 'package:uuid/uuid.dart';
 
 @lazySingleton
@@ -25,6 +26,7 @@ class FirebaseApi {
       _firestore
           .collection('messages')
           .where('chatId', isEqualTo: chatId)
+          .orderBy('createdAt')
           .snapshots();
 
   Future<void> googleLogin() async {
@@ -62,6 +64,12 @@ class FirebaseApi {
         'photo': _auth.currentUser?.photoURL,
       });
     }
+  }
+
+  Future<void> sendMessage(Message message) async {
+    final messages = _firestore.collection('messages');
+
+    await messages.add(message.toJson());
   }
 
   Future<QuerySnapshot<Map<String, dynamic>>> getUser(
