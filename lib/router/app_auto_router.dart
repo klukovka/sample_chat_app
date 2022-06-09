@@ -5,6 +5,7 @@ import 'package:sample_chat_app/pages/main_page/tabs/chats_tab.dart';
 import 'package:sample_chat_app/pages/main_page/tabs/people_tab.dart';
 import 'package:sample_chat_app/pages/main_page/tabs/settings_tab.dart';
 
+import '../pages/chat_page/chat_page.dart';
 import '../pages/main_page/main_page.dart';
 
 const _durationInMilliseconds = 250;
@@ -44,6 +45,12 @@ const _fadeIn = TransitionsBuilders.fadeIn;
           path: 'settings',
         ),
       ],
+    ),
+    CustomRoute(
+      page: ChatPage,
+      path: '/main/chats/:userId',
+      transitionsBuilder: _fadeIn,
+      durationInMilliseconds: _durationInMilliseconds,
     ),
   ],
 )

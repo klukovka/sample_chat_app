@@ -9,6 +9,7 @@ import 'package:injectable/injectable.dart' as _i2;
 
 import '../api/firebase_api.dart' as _i5;
 import '../bloc/app_cotrol/app_control_cubit.dart' as _i8;
+import '../bloc/chat_page/chat_page_cubit.dart' as _i9;
 import '../bloc/login_page/login_page_cubit.dart' as _i6;
 import '../bloc/main_page/people_tab/people_tab_cubit.dart' as _i7;
 import '../router/app_auto_router.gr.dart' as _i4;
@@ -29,5 +30,7 @@ _i1.GetIt $configureDependencies(_i1.GetIt get,
       () => _i7.PeopleTabCubit(get<_i5.FirebaseApi>()));
   gh.factory<_i8.AppControlCubit>(
       () => _i8.AppControlCubit(get<_i5.FirebaseApi>()));
+  gh.factoryParam<_i9.ChatPageCubit, String?, dynamic>(
+      (userId, _) => _i9.ChatPageCubit(get<_i5.FirebaseApi>(), userId));
   return get;
 }

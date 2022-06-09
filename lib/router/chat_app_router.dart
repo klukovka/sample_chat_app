@@ -17,4 +17,8 @@ class ChatAppRouter extends BaseRouter {
   Future<void> replaceWithLogin() async {
     await replace(const LoginRoute());
   }
+
+  Future<void> pushChatPage(String userId) async {
+    await push(ChatRoute(userId: userId));
+  }
 }

@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
+import 'package:uuid/uuid.dart';
 
 @lazySingleton
 class FirebaseApi {
@@ -55,5 +56,30 @@ class FirebaseApi {
         'photo': _auth.currentUser?.photoURL,
       });
     }
+  }
+
+  Future<Stream<QuerySnapshot<Map<String, dynamic>>>> getChatWithUser(
+      String userId) async {
+    final chats = _firestore.collection('chats');
+    final query = [
+      [userId, _auth.currentUser?.uid],
+      [_auth.currentUser?.uid, userId],
+    ];
+
+    final snapshots = await chats.where('users', whereIn: query).get();
+
+    if (snapshots.docs.isEmpty) {
+      await chats.add({
+        'name': null,
+        'photo': null,
+        'owner': _auth.currentUser?.uid,
+        'lastMessage': null,
+        'users': [userId, _auth.currentUser?.uid],
+        'messages': [],
+        'uid': const Uuid().v4(),
+      });
+    }
+
+    return chats.where('users', whereIn: query).limit(1).snapshots();
   }
 }
