@@ -30,7 +30,7 @@ enum MainMenuItemType {
       case MainMenuItemType.calls:
         return const CallsRoute();
       case MainMenuItemType.person:
-        return const PersonRoute();
+        return const PeopleRoute();
       case MainMenuItemType.settings:
         return const SettingsRoute();
     }
@@ -43,7 +43,7 @@ enum MainMenuItemType {
       case MainMenuItemType.calls:
         return context.strings.calls;
       case MainMenuItemType.person:
-        return context.strings.person;
+        return context.strings.people;
       case MainMenuItemType.settings:
         return context.strings.settings;
     }

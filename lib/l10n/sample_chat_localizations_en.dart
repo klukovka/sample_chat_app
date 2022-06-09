@@ -17,7 +17,7 @@ class SampleChatLocalizationsEn extends SampleChatLocalizations {
   String get calls => 'Calls';
 
   @override
-  String get person => 'Person';
+  String get people => 'People';
 
   @override
   String get settings => 'Settings';

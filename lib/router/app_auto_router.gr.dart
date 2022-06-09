@@ -17,7 +17,7 @@ import '../pages/auth/login_page.dart' as _i1;
 import '../pages/main_page/main_page.dart' as _i2;
 import '../pages/main_page/tabs/calls_tab.dart' as _i4;
 import '../pages/main_page/tabs/chats_tab.dart' as _i3;
-import '../pages/main_page/tabs/person_tab.dart' as _i5;
+import '../pages/main_page/tabs/people_tab.dart' as _i5;
 import '../pages/main_page/tabs/settings_tab.dart' as _i6;
 
 class AppAutoRouter extends _i7.RootStackRouter {
@@ -52,9 +52,10 @@ class AppAutoRouter extends _i7.RootStackRouter {
       return _i7.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i4.CallsTab());
     },
-    PersonRoute.name: (routeData) {
+    PeopleRoute.name: (routeData) {
       return _i7.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i5.PersonTab());
+          routeData: routeData,
+          child: _i7.WrappedRoute(child: const _i5.PeopleTab()));
     },
     SettingsRoute.name: (routeData) {
       return _i7.MaterialPageX<dynamic>(
@@ -77,7 +78,7 @@ class AppAutoRouter extends _i7.RootStackRouter {
               path: 'chats', parent: MainRoute.name),
           _i7.RouteConfig(CallsRoute.name,
               path: 'calls', parent: MainRoute.name),
-          _i7.RouteConfig(PersonRoute.name,
+          _i7.RouteConfig(PeopleRoute.name,
               path: 'person', parent: MainRoute.name),
           _i7.RouteConfig(SettingsRoute.name,
               path: 'settings', parent: MainRoute.name)
@@ -119,11 +120,11 @@ class CallsRoute extends _i7.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i5.PersonTab]
-class PersonRoute extends _i7.PageRouteInfo<void> {
-  const PersonRoute() : super(PersonRoute.name, path: 'person');
+/// [_i5.PeopleTab]
+class PeopleRoute extends _i7.PageRouteInfo<void> {
+  const PeopleRoute() : super(PeopleRoute.name, path: 'person');
 
-  static const String name = 'PersonRoute';
+  static const String name = 'PeopleRoute';
 }
 
 /// generated route for

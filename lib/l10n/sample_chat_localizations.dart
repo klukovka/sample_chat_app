@@ -110,11 +110,11 @@ abstract class SampleChatLocalizations {
   /// **'Calls'**
   String get calls;
 
-  /// No description provided for @person.
+  /// No description provided for @people.
   ///
   /// In en, this message translates to:
-  /// **'Person'**
-  String get person;
+  /// **'People'**
+  String get people;
 
   /// No description provided for @settings.
   ///

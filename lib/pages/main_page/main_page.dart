@@ -13,7 +13,7 @@ class MainPage extends StatelessWidget {
       builder: (context, child, animation) {
         final tabsRouter = AutoTabsRouter.of(context);
         return Scaffold(
-          body: child,
+          body: SafeArea(child: child),
           bottomNavigationBar: BottomNavigationBar(
             currentIndex: tabsRouter.activeIndex,
             onTap: tabsRouter.setActiveIndex,

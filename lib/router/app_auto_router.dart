@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:sample_chat_app/pages/auth/login_page.dart';
 import 'package:sample_chat_app/pages/main_page/tabs/calls_tab.dart';
 import 'package:sample_chat_app/pages/main_page/tabs/chats_tab.dart';
-import 'package:sample_chat_app/pages/main_page/tabs/person_tab.dart';
+import 'package:sample_chat_app/pages/main_page/tabs/people_tab.dart';
 import 'package:sample_chat_app/pages/main_page/tabs/settings_tab.dart';
 
 import '../pages/main_page/main_page.dart';
@@ -36,7 +36,7 @@ const _fadeIn = TransitionsBuilders.fadeIn;
           path: 'calls',
         ),
         AutoRoute(
-          page: PersonTab,
+          page: PeopleTab,
           path: 'person',
         ),
         AutoRoute(

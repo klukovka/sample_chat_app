@@ -15,6 +15,11 @@ class FirebaseApi {
 
   Stream<User?> get authState => _auth.authStateChanges();
 
+  Stream<QuerySnapshot<Map<String, dynamic>>> get people => _firestore
+      .collection('users')
+      .where('uid', isNotEqualTo: _auth.currentUser?.uid)
+      .snapshots();
+
   Future<void> googleLogin() async {
     final googleUser = await GoogleSignIn().signIn();
     if (googleUser == null) return;

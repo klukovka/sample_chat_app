@@ -2,7 +2,7 @@
     "appName": "Firebase Chat",
     "chats": "Chats",
     "calls": "Calls",
-    "person": "Person",
+    "people": "People",
     "settings": "Settings",
     "signUpWithGoogle": "Sign up with Google"
 }
