@@ -20,7 +20,7 @@ Future<void> main() async {
     await _connectToFirebaseEmulator();
   }
   await configureDependencies();
-  runApp(const SampleChatApp());
+  runApp(SampleChatApp.create());
 }
 
 Future<void> _connectToFirebaseEmulator() async {

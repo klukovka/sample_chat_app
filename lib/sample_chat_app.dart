@@ -1,12 +1,22 @@
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sample_chat_app/router/app_auto_router.gr.dart';
+import 'package:sample_chat_app/router/chat_app_router.dart';
 
+import 'bloc/app_cotrol/app_control_cubit.dart';
 import 'config/locator.dart';
 import 'l10n/sample_chat_localizations.dart';
 
 class SampleChatApp extends StatelessWidget {
-  const SampleChatApp({super.key});
+  static Widget create() {
+    return BlocProvider(
+      create: (_) => locator<AppControlCubit>(),
+      child: const SampleChatApp._(),
+    );
+  }
+
+  const SampleChatApp._({super.key});
 
   ThemeData get _darkTheme {
     return FlexThemeData.dark(
@@ -40,18 +50,27 @@ class SampleChatApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      debugShowCheckedModeBanner: false,
-      theme: _lightTheme,
-      darkTheme: _darkTheme,
-      localizationsDelegates: SampleChatLocalizations.localizationsDelegates,
-      supportedLocales: SampleChatLocalizations.supportedLocales,
-      routeInformationParser: locator<AppAutoRouter>().defaultRouteParser(),
-      routeInformationProvider: locator<AppAutoRouter>().routeInfoProvider(),
-      routerDelegate: locator<AppAutoRouter>().delegate(
-        navigatorObservers: () {
-          return [];
-        },
+    return BlocListener<AppControlCubit, AppControlState>(
+      listener: (context, state) {
+        if (state.currentUser != null) {
+          router.replaceWithMain();
+        } else {
+          router.replaceWithLogin();
+        }
+      },
+      child: MaterialApp.router(
+        debugShowCheckedModeBanner: false,
+        theme: _lightTheme,
+        darkTheme: _darkTheme,
+        localizationsDelegates: SampleChatLocalizations.localizationsDelegates,
+        supportedLocales: SampleChatLocalizations.supportedLocales,
+        routeInformationParser: locator<AppAutoRouter>().defaultRouteParser(),
+        routeInformationProvider: locator<AppAutoRouter>().routeInfoProvider(),
+        routerDelegate: locator<AppAutoRouter>().delegate(
+          navigatorObservers: () {
+            return [];
+          },
+        ),
       ),
     );
   }

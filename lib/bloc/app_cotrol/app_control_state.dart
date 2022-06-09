@@ -5,5 +5,5 @@ class AppControlState extends Equatable {
   const AppControlState([this.currentUser]);
 
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [currentUser];
 }

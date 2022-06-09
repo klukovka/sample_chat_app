@@ -13,7 +13,7 @@ class FirebaseApi {
     _firestore = FirebaseFirestore.instance;
   }
 
-  Stream<User?> authState() => _auth.authStateChanges();
+  Stream<User?> get authState => _auth.authStateChanges();
 
   Future<void> googleLogin() async {
     final googleUser = await GoogleSignIn().signIn();
@@ -47,6 +47,7 @@ class FirebaseApi {
         'email': _auth.currentUser?.email,
         'status': 'Available',
         'uid': _auth.currentUser?.uid,
+        'photo': _auth.currentUser?.photoURL,
       });
     }
   }

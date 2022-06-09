@@ -29,7 +29,7 @@ class AppAutoRouter extends _i7.RootStackRouter {
     LoginRoute.name: (routeData) {
       return _i7.CustomPage<dynamic>(
           routeData: routeData,
-          child: const _i1.LoginPage(),
+          child: _i7.WrappedRoute(child: const _i1.LoginPage()),
           transitionsBuilder: _i7.TransitionsBuilders.fadeIn,
           durationInMilliseconds: 250,
           opaque: true,
