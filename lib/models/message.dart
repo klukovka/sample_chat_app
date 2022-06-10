@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:sample_chat_app/utils/extensions/date_time_ext.dart';
 
 import 'chat_user.dart';
 
@@ -8,8 +9,12 @@ part 'message.g.dart';
 
 @JsonSerializable()
 class Message extends Equatable {
-  final String? uid;
+  final String uid;
   final String text;
+  @JsonKey(
+    toJson: DateTimeExt.toJson,
+    fromJson: DateTimeExt.fromJson,
+  )
   final DateTime createdAt;
   final String userId;
   final String chatId;
@@ -20,7 +25,7 @@ class Message extends Equatable {
     required this.createdAt,
     required this.userId,
     required this.chatId,
-    this.uid,
+    required this.uid,
     this.user,
   });
 

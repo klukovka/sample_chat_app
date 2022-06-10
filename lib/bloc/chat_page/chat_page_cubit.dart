@@ -23,9 +23,11 @@ class ChatPageCubit extends BaseCubit<ChatPageState> {
     @factoryParam String? userId,
   ) : super(const ChatPageState()) {
     _userId = userId!;
-    init();
-    _messagesSubscription =
-        _firebaseApi.getMessages(state.chat.uid ?? '').listen(_listenMessages);
+    init().whenComplete(() {
+      _messagesSubscription = _firebaseApi
+          .getMessages(state.chat.uid ?? '')
+          .listen(_listenMessages);
+    });
   }
 
   @override
@@ -74,7 +76,8 @@ class ChatPageCubit extends BaseCubit<ChatPageState> {
     emit(state.copyWith(
       messages: event.docs.map((e) {
         return Message.fromJson(e.data());
-      }).toList(),
+      }).toList()
+        ..sort((a, b) => a.createdAt.compareTo(b.createdAt)),
     ));
   }
 

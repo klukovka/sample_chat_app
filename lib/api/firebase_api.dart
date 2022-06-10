@@ -26,7 +26,6 @@ class FirebaseApi {
       _firestore
           .collection('messages')
           .where('chatId', isEqualTo: chatId)
-          .orderBy('createdAt')
           .snapshots();
 
   Future<void> googleLogin() async {
@@ -55,7 +54,9 @@ class FirebaseApi {
         .get();
 
     if (snapshots.docs.isEmpty) {
-      await users.add({
+      final doc = users.doc(_auth.currentUser?.uid);
+
+      await doc.set({
         'name': _auth.currentUser?.displayName,
         'phone': null,
         'email': _auth.currentUser?.email,
@@ -68,8 +69,10 @@ class FirebaseApi {
 
   Future<void> sendMessage(Message message) async {
     final messages = _firestore.collection('messages');
-
-    await messages.add(message.toJson());
+    final doc = messages.doc(message.uid);
+    await doc.set(message.toJson());
+    final chat = _firestore.collection('chats').doc(message.chatId);
+    await chat.update({'lastMessage': message.toJson()});
   }
 
   Future<QuerySnapshot<Map<String, dynamic>>> getUser(
@@ -91,13 +94,15 @@ class FirebaseApi {
     final snapshots = await chats.where('users', whereIn: query).get();
 
     if (snapshots.docs.isEmpty) {
-      await chats.add({
+      final uid = const Uuid().v4();
+      final doc = chats.doc(uid);
+      await doc.set({
         'name': null,
         'photo': null,
         'owner': _auth.currentUser?.uid,
         'lastMessage': null,
         'users': [userId, _auth.currentUser?.uid],
-        'uid': const Uuid().v4(),
+        'uid': uid,
       });
     }
 
