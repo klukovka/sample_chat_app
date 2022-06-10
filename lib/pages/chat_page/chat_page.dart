@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sample_chat_app/bloc/app_cotrol/app_control_cubit.dart';
 import 'package:sample_chat_app/bloc/chat_page/chat_page_cubit.dart';
 import 'package:sample_chat_app/config/locator.dart';
+import 'package:sample_chat_app/pages/chat_page/views/message_tile.dart';
 
 class ChatPage extends StatefulWidget implements AutoRouteWrapper {
   final String userId;
@@ -26,19 +27,21 @@ class ChatPage extends StatefulWidget implements AutoRouteWrapper {
 }
 
 class _ChatPageState extends State<ChatPage> {
-  late final TextEditingController _controller;
+  late final TextEditingController _textController;
 
   ChatPageCubit get cubit => context.read();
+  String get _currentUser =>
+      context.read<AppControlCubit>().state.currentUser?.uid ?? '';
 
   @override
   void initState() {
     super.initState();
-    _controller = TextEditingController();
+    _textController = TextEditingController();
   }
 
   @override
   void dispose() {
-    _controller.dispose();
+    _textController.dispose();
     super.dispose();
   }
 
@@ -49,9 +52,6 @@ class _ChatPageState extends State<ChatPage> {
         // TODO: implement listener
       },
       builder: (context, state) {
-        final currentUser =
-            context.read<AppControlCubit>().state.currentUser?.uid;
-
         return Scaffold(
           appBar: AppBar(
             title: ListTile(
@@ -68,36 +68,35 @@ class _ChatPageState extends State<ChatPage> {
               subtitle: Text(state.user.status),
             ),
           ),
-          body: ListView.separated(
-            itemBuilder: (_, index) {
-              return Container(
-                decoration: BoxDecoration(
-                  color: state.messages[index].userId == currentUser
-                      ? Theme.of(context).primaryColorDark
-                      : Theme.of(context).primaryColorLight,
+          body: Padding(
+            padding: const EdgeInsets.fromLTRB(16, 0, 16, 76),
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              child: ListView.separated(
+                shrinkWrap: true,
+                reverse: true,
+                itemBuilder: (_, index) => MessageTile(
+                  message: state.messages[index],
+                  isCurrent: _currentUser == state.messages[index].userId,
                 ),
-                child: Text(
-                  state.messages[index].text,
-                  style:
-                      TextStyle(color: Theme.of(context).colorScheme.onPrimary),
-                ),
-              );
-            },
-            separatorBuilder: (_, __) => const SizedBox(height: 16),
-            itemCount: state.messages.length,
+                separatorBuilder: (_, __) => const SizedBox(height: 16),
+                itemCount: state.messages.length,
+              ),
+            ),
           ),
           bottomSheet: ListTile(
             title: TextField(
-              controller: _controller,
+              controller: _textController,
+              maxLines: null,
             ),
             trailing: IconButton(
-              icon: Icon(Icons.send),
+              icon: const Icon(Icons.send),
               onPressed: () {
                 cubit.sendMessage(
-                  _controller.text,
-                  currentUser ?? '',
+                  _textController.text,
+                  _currentUser,
                 );
-                _controller.text = '';
+                _textController.text = '';
               },
             ),
           ),

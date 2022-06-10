@@ -77,7 +77,7 @@ class ChatPageCubit extends BaseCubit<ChatPageState> {
       messages: event.docs.map((e) {
         return Message.fromJson(e.data());
       }).toList()
-        ..sort((a, b) => a.createdAt.compareTo(b.createdAt)),
+        ..sort((a, b) => b.createdAt.compareTo(a.createdAt)),
     ));
   }
 
